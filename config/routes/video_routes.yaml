@@ -1,0 +1,5 @@
+# config/routes/video_routes.yaml
+video_route:
+    path: /video
+    controller: App\Controller\VideoController::showVideo
+    
