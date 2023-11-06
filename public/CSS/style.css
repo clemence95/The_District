@@ -1,3 +1,11 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/public/IMG/bg2.jpeg') center center fixed no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 1;
+}
+
 /* style */
 .dancing {
     font-family: 'Dancing Script' !important;
@@ -7,6 +15,7 @@
 .Lugrasino {
     font-family: 'Lugrasimo', sans-serif !important;
 }
+
 /* Fin style */
 
 /* Navbar */
@@ -45,4 +54,5 @@
     background-color: var(--bs-teal);
 
 }
+
 /* Fin Navbar */
