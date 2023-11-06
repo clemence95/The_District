@@ -1,6 +1,37 @@
-body {
-    background-color: #222222;
+/* Navbar */
+.cc-navbar .nav-link {
+    border-bottom: 1px solid transparent;
+    transition: padding-bottom .4s ease-in-out, border-color .3s ease;
+    /* evenement transition */
+    font-size: 25px;
 }
-h1, p {
-    color: #C9C9C9;
+
+.cc-navbar .nav-link:hover {
+    /*effet de la trasition*/
+    padding-bottom: 20px;
+    border-bottom-color: var(--bs-teal);
+    /* couleur de boots qui color la barre de la box du bas */
 }
+
+.cc-navbar {
+    background-color: rgb(0, 0, 0, .55);
+    font-family: serif;
+    box-shadow: 1px 1px 3px rgba(255, 255, 255, .54);
+    /* padding-top: 0; */
+    height: 100px;
+    z-index: 99;
+}
+
+.btn-order {
+    color: var(--bs-teal);
+    border-color: var(--bs-teal);
+    transition: .5s;
+}
+
+.btn-order:hover,
+.btn-order:active {
+    color: white;
+    background-color: var(--bs-teal);
+
+}
+/* Fin Navbar */
