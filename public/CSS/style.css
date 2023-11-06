@@ -56,3 +56,26 @@ body {
 }
 
 /* Fin Navbar */
+
+/* Banner / Video */
+.banner {
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+}
+
+.video-container {
+    width: 100%;
+    height: 30vh;
+}
+
+.video {
+    object-fit: cover;
+}
+
+.banner .banner-desc {
+    font-size: 40px;
+    font-weight: 400;
+    color: white;
+}
+/* Fin banner */
