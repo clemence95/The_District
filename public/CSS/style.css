@@ -1,3 +1,14 @@
+/* style */
+.dancing {
+    font-family: 'Dancing Script' !important;
+    color: white;
+}
+
+.Lugrasino {
+    font-family: 'Lugrasimo', sans-serif !important;
+}
+/* Fin style */
+
 /* Navbar */
 .cc-navbar .nav-link {
     border-bottom: 1px solid transparent;
