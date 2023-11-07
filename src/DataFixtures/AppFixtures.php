@@ -23,11 +23,12 @@ class AppFixtures extends Fixture
                 ->setLibelle($data['libelle'])
                 ->setImage($data['image'])
                 ->setActive($data['active']);
-// dd($categorie);
+            // dd($categorie);
             $manager->persist($category);
-               // empêcher l'auto incrément
-               $metadata = $manager->getClassMetaData(Categorie::class);
-               $metadata->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
+            
+            // empêcher l'auto incrément
+            $metadata = $manager->getClassMetaData(Categorie::class);
+            $metadata->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
         }
         $manager->flush();
 
@@ -41,13 +42,13 @@ class AppFixtures extends Fixture
                 ->setPrix($data['prix'])
                 ->setImage($data['image'])
                 ->setActive($data['active']);
-                
-            
+
+
             // Assurez-vous que $data['id_categorie'] correspond à une catégorie existante
             $cat = $categorieRepo->find($data['id_categorie']);
             $dish->setCategorie($cat);
             // dd($cat);
-           
+
             $manager->persist($dish);
         }
 
@@ -75,4 +76,3 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 }
-
