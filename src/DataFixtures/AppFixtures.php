@@ -12,7 +12,8 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        include 'TheDistrict.php';
+        include 'theDistrict.php';
+        $categorieRepo = $manager->getRepository(Categorie::class);
 
         // Chargez les catégories
         foreach ($categorie as $data) {
@@ -22,9 +23,13 @@ class AppFixtures extends Fixture
                 ->setLibelle($data['libelle'])
                 ->setImage($data['image'])
                 ->setActive($data['active']);
-
+// dd($categorie);
             $manager->persist($category);
+               // empêcher l'auto incrément
+               $metadata = $manager->getClassMetaData(Categorie::class);
+               $metadata->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
         }
+        $manager->flush();
 
         // Chargez les plats
         foreach ($plat as $data) {
@@ -34,12 +39,15 @@ class AppFixtures extends Fixture
                 ->setLibelle($data['libelle'])
                 ->setDescription($data['description'])
                 ->setPrix($data['prix'])
-                ->setImage($data['image']);
+                ->setImage($data['image'])
+                ->setActive($data['active']);
+                
             
             // Assurez-vous que $data['id_categorie'] correspond à une catégorie existante
-            $category = $manager->getRepository(Categorie::class)->find($data['id_categorie']);
-            $dish->setCategorie($category);
-
+            $cat = $categorieRepo->find($data['id_categorie']);
+            $dish->setCategorie($cat);
+            // dd($cat);
+           
             $manager->persist($dish);
         }
 
