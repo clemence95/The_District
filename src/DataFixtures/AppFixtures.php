@@ -25,7 +25,6 @@ class AppFixtures extends Fixture
                 ->setActive($data['active']);
             // dd($categorie);
             $manager->persist($category);
-            
             // empêcher l'auto incrément
             $metadata = $manager->getClassMetaData(Categorie::class);
             $metadata->setIdGeneratorType(\Doctrine\ORM\Mapping\ClassMetadata::GENERATOR_TYPE_NONE);
