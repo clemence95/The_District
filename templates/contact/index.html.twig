@@ -9,7 +9,7 @@
     </div>
 
     <div class="row">
-        <div class="col-9 mx-auto mb-2 mt-4">
+        <div class="col-9 mx-auto mb-2 ">
             {{ form_label(form.objet, "Mon libellé a été modifié") }}
              {{ form_widget(form.objet, {'attr': {'class': 'btn-light'} }) }}
              {{ form_errors(form.objet) }}
@@ -25,4 +25,5 @@
     {{ form_end(form) }}
 </div>
 {% endblock %}
+
 
