@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Categorie;
 use App\Entity\Plat;
 use App\Entity\Commande;
+use App\Entity\Utilisateur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -50,27 +51,57 @@ class AppFixtures extends Fixture
 
             $manager->persist($dish);
         }
+        // Créez les utilisateurs
+        $user1 = new Utilisateur();
+        $user1
+            ->setEmail("test1@test.com")
+            ->setPassword("123456")
+            ->setNom("test")
+            ->setPrenom("test2")
+            ->setTelephone("0123456789")
+            ->setAdresse("3 rue des cailloux")
+            ->setCp("80000")
+            ->setVille("Amiens")
+            ->setRoles('ROLE_USER');
+        $manager->persist($user1);
 
-        // Chargez les commandes
-        // foreach ($commande as $data) {
-        //     $order = new Commande();
-        //     $order
-        //         ->setId($data['id'])
-        //         ->setId($data['id_plat'])
-        //         ->setTotal($data['total'])
-        //         ->setDateCommande(new \DateTime($data['date_commande']))
-        //         ->setEtat($data['etat'])
-        //         ->setUtilisateur($data['nom_client'])
-        //         ->setTelephoneClient($data['telephone_client'])
-        //         ->setEmailClient($data['email_client'])
-        //         ->setAdresseClient($data['adresse_client']);
+        $user2 = new Utilisateur();
+        $user2
+            ->setEmail("test2@test.com")
+            ->setPassword("123456")
+            ->setNom("test222")
+            ->setPrenom("test2")
+            ->setTelephone("0123456789")
+            ->setAdresse("3 rue des cailloux")
+            ->setCp("80000")
+            ->setVille("Amiens")
+            ->setRoles('ROLE_USER');
+        $manager->persist($user2);
 
-        //     // Assurez-vous que $data['id_plat'] correspond à un plat existant
-        //     $dish = $manager->getRepository(Plat::class)->find($data['id_plat']);
-        //     $order->setPlat($dish);
+        // Créez les commandes
+        $commande1 = new Commande();
+        $commande1
+            ->setDateCommande(new \DateTime('2023-11-08'))
+            ->setTotal("30.00")
+            ->setEtat("annulée")
+            ->setUtilisateur($user1);
+        $manager->persist($commande1);
 
-        //     $manager->persist($order);
-        // }
+        $commande2 = new Commande();
+        $commande2
+            ->setDateCommande(new \DateTime('2023-11-08'))
+            ->setTotal("45.00")
+            ->setEtat("en cours")
+            ->setUtilisateur($user2);
+        $manager->persist($commande2);
+
+        $commande3 = new Commande();
+        $commande3
+            ->setDateCommande(new \DateTime('2023-11-08'))
+            ->setTotal("30.00")
+            ->setEtat("annulée")
+            ->setUtilisateur($user1);
+        $manager->persist($commande3);
 
         $manager->flush();
     }
