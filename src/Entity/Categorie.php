@@ -15,7 +15,7 @@ class Categorie
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 255)]
     private ?string $libelle = null;
 
     #[ORM\Column(length: 50)]

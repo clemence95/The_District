@@ -17,6 +17,10 @@ class Contact
     #[ORM\Column(length: 255)]
     private ?string $objet = null;
 
+     // Propriété pour l'e-mail
+     #[ORM\Column(length: 255)]
+     private ?string $email = null;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $message = null;
 
@@ -37,6 +41,17 @@ class Contact
         return $this;
     }
 
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
     public function getMessage(): ?string
     {
         return $this->message;
