@@ -23,7 +23,7 @@ class Commande
     private ?string $total = null;
 
     #[ORM\Column]
-    private ?int $etat = null;
+    private ?int $etat = null; //0- En cours de preparaton; 1- en cours de livraison; 2- livrée ; 3- annulé
 
     #[ORM\OneToMany(mappedBy: 'details', targetEntity: Detail::class)]
     private Collection $details;

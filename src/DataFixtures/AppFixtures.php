@@ -83,7 +83,7 @@ class AppFixtures extends Fixture
         $commande1
             ->setDateCommande(new \DateTime('2023-11-08'))
             ->setTotal("30.00")
-            ->setEtat("annulée")
+            ->setEtat(3)
             ->setUtilisateur($user1);
         $manager->persist($commande1);
 
@@ -91,7 +91,7 @@ class AppFixtures extends Fixture
         $commande2
             ->setDateCommande(new \DateTime('2023-11-08'))
             ->setTotal("45.00")
-            ->setEtat("en cours")
+            ->setEtat(1)
             ->setUtilisateur($user2);
         $manager->persist($commande2);
 
@@ -99,7 +99,7 @@ class AppFixtures extends Fixture
         $commande3
             ->setDateCommande(new \DateTime('2023-11-08'))
             ->setTotal("30.00")
-            ->setEtat("annulée")
+            ->setEtat(3)
             ->setUtilisateur($user1);
         $manager->persist($commande3);
 
