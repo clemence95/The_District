@@ -30,7 +30,7 @@ class ContactController extends AbstractController
 
             // dd($form);
 
-                        // Enregistrez le message dans la base de données
+            // Enregistrez le message dans la base de données
             $message = new Contact();
             $message->setEmail($data->getEmail()); // Utilisez le setter pour la propriété 'user_email'
             $message->setObjet($data->getObjet()); // Utilisez le setter pour la propriété 'subject'
@@ -48,16 +48,15 @@ class ContactController extends AbstractController
                     'user_email' => $data->getEmail(), // Accédez à la propriété 'user_email' de l'objet Contact
                     'subject' => $data->getObjet(),
                     'message' => $data->getMessage(), // Accédez à la propriété 'message' de l'objet Contact
-                  
+
                 ]);
-                
+
             // Envoyez l'e-mail
             $mailer->send($email);
 
-            
+
             // Redirection vers la page d'accueil
             return $this->redirectToRoute('app_accueil');
-            
         }
 
         return $this->render('contact/index.html.twig', [

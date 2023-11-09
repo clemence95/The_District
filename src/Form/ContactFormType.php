@@ -24,7 +24,7 @@ class ContactFormType extends AbstractType
                         'message' => 'L\'adresse e-mail "{{ value }}" n\'est pas valide.',
                     ]),
                 ],
-            ])            
+            ])
             ->add('message', TextareaType::class, [ // Utilisez TextareaType::class pour le champ textarea
                 'label' => 'Votre message',
                 'required' => true // Rendez le champ de message obligatoire
