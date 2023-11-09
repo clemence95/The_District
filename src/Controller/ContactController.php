@@ -32,7 +32,7 @@ class ContactController extends AbstractController
                 ->from('votre@email.com')
                 ->to('destinataire@email.com')
                 ->subject('Tututoto')
-                ->htmlTemplate('mailer/index.html.twig')
+                ->htmlTemplate('contact/index.html.twig')
                 ->context([
                     'user_email' => $data->getEmail(), // Accédez à la propriété 'user_email' de l'objet Contact
                     'subject' => $data->getObjet(),
