@@ -21,29 +21,16 @@ class ContactController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $form = $this->createForm(ContactFormType::class);
+        // dd($form);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupérez les données du formulaire
             $data = $form->getData();
 
-            // Créez un e-mail avec la classe TemplatedEmail
-            $email = (new TemplatedEmail())
-                ->from('votre@email.com')
-                ->to('destinataire@email.com')
-                ->subject('Tututoto')
-                ->htmlTemplate('contact/index.html.twig')
-                ->context([
-                    'user_email' => $data->getEmail(), // Accédez à la propriété 'user_email' de l'objet Contact
-                    'subject' => $data->getObjet(),
-                    'message' => $data->getMessage(), // Accédez à la propriété 'message' de l'objet Contact
-                  
-                ]);
+            // dd($form);
 
-            // Envoyez l'e-mail
-            $mailer->send($email);
-
-            // Enregistrez le message dans la base de données
+                        // Enregistrez le message dans la base de données
             $message = new Contact();
             $message->setEmail($data->getEmail()); // Utilisez le setter pour la propriété 'user_email'
             $message->setObjet($data->getObjet()); // Utilisez le setter pour la propriété 'subject'
@@ -51,13 +38,31 @@ class ContactController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
+            // Créez un e-mail avec la classe TemplatedEmail
+            $email = (new TemplatedEmail())
+                ->from($data->getEmail())
+                ->to('destinataire@email.com')
+                ->subject($data->getObjet())
+                ->htmlTemplate('emails/contact_mail.html.twig')
+                ->context([
+                    'user_email' => $data->getEmail(), // Accédez à la propriété 'user_email' de l'objet Contact
+                    'subject' => $data->getObjet(),
+                    'message' => $data->getMessage(), // Accédez à la propriété 'message' de l'objet Contact
+                  
+                ]);
+                
+            // Envoyez l'e-mail
+            $mailer->send($email);
+
+            
             // Redirection vers la page d'accueil
             return $this->redirectToRoute('app_accueil');
             
         }
 
         return $this->render('contact/index.html.twig', [
-            'form' => $form->createView()
+            // 'form' => $form->createView(),
+            'form' => $form
         ]);
     }
 }
