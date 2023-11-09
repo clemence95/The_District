@@ -22,3 +22,17 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # config/services.yaml
+
+
+    App\Repository\CategorieRepository:
+        class: App\Repository\CategorieRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    App\Repository\PlatRepository:
+        class: App\Repository\PlatRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
