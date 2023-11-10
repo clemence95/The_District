@@ -17,14 +17,13 @@ class AccueilService
         $this->logger = $logger;
     }
 
-    public function getSomeCategorie($name)
+    public function getAllCategories()
     {
         try {
             $query = $this->entityManager->createQuery(
                 'SELECT c
-            FROM App\Entity\Categorie c
-            WHERE c.name LIKE :name'
-            )->setParameter('name', '%' . $name . '%');
+                FROM App\Entity\Categorie c'
+            );
 
             return $query->getResult();
         } catch (\Exception $e) {
@@ -36,14 +35,14 @@ class AccueilService
         }
     }
 
-    public function getSomePlat($name)
+
+    public function getAllPlats()
     {
         try {
             $query = $this->entityManager->createQuery(
-                'SELECT d
-                FROM App\Entity\Plat d
-                WHERE d.name LIKE :name'
-            )->setParameter('name', '%' . $name . '%');
+                'SELECT p
+                FROM App\Entity\Plat p'
+            );
 
             return $query->getResult();
         } catch (\Exception $e) {

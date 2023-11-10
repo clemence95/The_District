@@ -25,8 +25,9 @@ class Commande
     #[ORM\Column]
     private ?int $etat = null; //0- En cours de preparaton; 1- en cours de livraison; 2- livrée ; 3- annulé
 
-    #[ORM\OneToMany(mappedBy: 'details', targetEntity: Detail::class)]
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Detail::class)]
     private Collection $details;
+
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     private ?utilisateur $Utilisateur = null;
@@ -95,21 +96,21 @@ class Commande
     {
         if (!$this->details->contains($detail)) {
             $this->details->add($detail);
-            $detail->setDetails($this);
+            $detail->setCommande($this);
         }
-
+    
         return $this;
     }
-
+    
     public function removeDetail(Detail $detail): static
     {
         if ($this->details->removeElement($detail)) {
             // set the owning side to null (unless already changed)
-            if ($detail->getDetails() === $this) {
-                $detail->setDetails(null);
+            if ($detail->getCommande() === $this) {
+                $detail->setCommande(null);
             }
         }
-
+    
         return $this;
     }
 
