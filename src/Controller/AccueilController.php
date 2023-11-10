@@ -1,35 +1,43 @@
 <?php
 
+// src/Controller/AccueilController.php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\CategorieRepository;
-use App\Repository\PlatRepository;
+use App\Service\AccueilService;
+
+// src/Controller/AccueilController.php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use App\Service\AccueilService;
 
 class AccueilController extends AbstractController
 {
-    private $categorieRepository;
-    private $platRepository;
+    private AccueilService $accueilService;
 
-    public function __construct(CategorieRepository $categorieRepository, PlatRepository $platRepository)
+    public function __construct(AccueilService $accueilService)
     {
-        $this->categorieRepository = $categorieRepository;
-        $this->platRepository = $platRepository;
+        $this->accueilService = $accueilService;
     }
 
     #[Route('/accueil', name: 'app_accueil')]
     public function index(): Response
     {
-         // Utilise les repositories pour récupérer les données
-         $plats = $this->platRepository->findAll();
-         $categories = $this->categorieRepository->findAll();
+        $categories = $this->accueilService->getSomeCategorie('NomCategorie');
+        $plats = $this->accueilService->getSomePlat('NomPlat');
+
+        // ...
 
         return $this->render('accueil/index.html.twig', [
-            'plats' => $plats,
             'categories' => $categories,
+            'plats' => $plats,
         ]);
     }
-    
 }
