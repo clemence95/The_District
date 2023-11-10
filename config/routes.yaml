@@ -4,15 +4,4 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-# Route pour la page d'accueil
-accueil:
-    path: /
-    controller: App\Controller\AccueilController::index
-    methods: ['GET']
-
-# Route pour la liste des plats
-plats_liste:
-    path: /plats
-    controller: App\Controller\PlatController::liste
-    methods: ['GET']
 

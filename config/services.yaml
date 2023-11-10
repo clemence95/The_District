@@ -25,18 +25,5 @@ services:
 
 # Définition de services spécifiques pour les repositories
 
-    App\Service\AccueilService:
-        arguments:
-            $entityManager: '@doctrine.orm.entity_manager'
-            $logger: '@logger'
 
-    App\Repository\CategorieRepository:
-        class: App\Repository\CategorieRepository
-        arguments:
-            - '@doctrine.orm.entity_manager'
-
-    App\Repository\PlatRepository:
-        class: App\Repository\PlatRepository
-        arguments:
-            - '@doctrine.orm.entity_manager'
 
