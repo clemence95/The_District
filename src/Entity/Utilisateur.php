@@ -42,7 +42,7 @@ class Utilisateur
     #[ORM\Column(length: 255)]
     private ?string $roles = null;
 
-    #[ORM\OneToMany(mappedBy: 'Utilisateur', targetEntity: Commande::class)]
+    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commande::class)]
     private Collection $commandes;
 
     public function __construct()

@@ -29,8 +29,9 @@ class Commande
     private Collection $details;
 
 
-    #[ORM\ManyToOne(inversedBy: 'commandes')]
-    private ?utilisateur $Utilisateur = null;
+    #[ORM\ManyToOne(targetEntity: Utilisateur::class, inversedBy: 'commandes')]
+    #[ORM\JoinColumn(name: 'utilisateur_id', referencedColumnName: 'id')]
+    private ?Utilisateur $utilisateur = null;
 
     public function __construct()
     {
@@ -116,12 +117,12 @@ class Commande
 
     public function getUtilisateur(): ?utilisateur
     {
-        return $this->Utilisateur;
+        return $this->utilisateur;
     }
 
     public function setUtilisateur(?utilisateur $Utilisateur): static
     {
-        $this->Utilisateur = $Utilisateur;
+        $this->utilisateur = $Utilisateur;
 
         return $this;
     }

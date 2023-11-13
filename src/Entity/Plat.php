@@ -38,6 +38,7 @@ class Plat
     #[ORM\OneToMany(mappedBy: 'plat', targetEntity: Detail::class)]
     private Collection $details;
 
+
     public function getId(): ?int
     {
         return $this->id;

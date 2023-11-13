@@ -15,28 +15,28 @@
                 <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
                 <button class="btn btn-outline-success" style="width: 20vh; height: 30px;" type="submit">Recherche</button>
             </div>
-
+</section>
             {# Affiche la liste des plats #}
-            <div class="plats-list">
+            <div class="plats-list text-white">
                 <h2>Plats</h2>
                 <ul>
                     {% for plat in plats %}
-                        <li>{{ plat.nom }} - {{ plat.prix }} €</li>
+                        <li>{{ plat.libelle }} - {{ plat.prix }} €</li>
                     {% endfor %}
                 </ul>
             </div>
 
             {# Affiche la liste des catégories #}
-            <div class="categories-list">
+            <div class="categories-list text-white">
                 <h2>Categories</h2>
                 <ul>
                     {% for categorie in categories %}
-                        <li>{{ categorie.nom }}</li>
+                        <li>{{ categorie.libelle }}</li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
-    </section>
+
 {% endblock %}
 
 
