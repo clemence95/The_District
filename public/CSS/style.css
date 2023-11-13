@@ -78,3 +78,8 @@ body {
     color: white;
 }
 /* Fin banner */
+
+.custom-card-height {
+    height: 300px; /* Ajustez cette valeur selon vos besoins */
+}
+
