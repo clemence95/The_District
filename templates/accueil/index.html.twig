@@ -29,7 +29,7 @@
                 <div class="col-md-4">
                     <div class="card" style="background-image: url('{{ asset('IMG/' ~ categorie.image) }}'); background-size: cover; height: 300px;">
                         <div class="card-body custom-card-body">
-                            <h5 class="card-title text-center" style="line-height: 8;"><a href="#">{{ categorie.libelle }}</a></h5>
+                            <h5 class="card-title text-center" style="line-height: 6;"><a href="#">{{ categorie.libelle }}</a></h5>
                         </div>
                     </div>
                 </div>
@@ -47,9 +47,9 @@
         <div class="row g-4">
             {% for plat in plats %}
                 <div class="col-md-4">
-                    <div class="card" style="background-image: url('{{ asset('IMG/' ~ plat.image) }}'); background-size: cover; height: 300px;">
+                    <div class="card" style="background-image: url('{{ asset('/IMG/' ~ plat.image | url_encode) }}'); background-size: cover; height: 300px;">
                         <div class="card-body custom-card-body">
-                            <h5 class="card-title text-center" style="line-height: 3;"><a href="#">{{ plat.libelle }}</a></h5>
+                            <h5 class="card-title text-center" style="line-height: 2;"><a href="#">{{ plat.libelle }}</a></h5>
                             <p class="card-text text-center" style="line-height: 8;">{{ plat.prix }} €</p>
                         </div>
                     </div>
@@ -58,7 +58,6 @@
         </div>
     </div>
 </section>
-
 
 {% endblock %}
 
