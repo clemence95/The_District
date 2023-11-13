@@ -38,8 +38,6 @@
     </div>
 </section>
 
-
-
     {# Affiche la liste des Plats #}
 <section class="Plats bg-dark-subtil Lugrasimo py-5">
     <h1 class="text-center dancing"><a href="#">Plats</a></h1>
@@ -49,8 +47,8 @@
                 <div class="col-md-4">
                     <div class="card" style="background-image: url('{{ asset('/IMG/' ~ plat.image | url_encode) }}'); background-size: cover; height: 300px;">
                         <div class="card-body custom-card-body">
-                            <h5 class="card-title text-center" style="line-height: 2;"><a href="#">{{ plat.libelle }}</a></h5>
-                            <p class="card-text text-center" style="line-height: 8;">{{ plat.prix }} €</p>
+                            <h5 class="card-title text-center" style="line-height: 1;"><a href="#">{{ plat.libelle }}</a></h5>
+                            <p class="card-text text-center" style="line-height: 16;">{{ plat.prix }} €</p>
                         </div>
                     </div>
                 </div>
