@@ -29,6 +29,7 @@ public function index(): Response
     {
   $plats = $this->platRepo->findAll();
   $categories = $this->categorieRepo->findAll();
+//   dd($categories);
 
         // ...
 
