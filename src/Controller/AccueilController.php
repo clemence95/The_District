@@ -38,13 +38,24 @@ class AccueilController extends AbstractController
             'plats' => $plats,
         ]);
     }
-    #[Route('/plat', name: 'app_plat')]
-    public function autrePage(): Response
+
+    #[Route('/plats', name: 'app_plats')]
+    public function plats(): Response
     {
         $plats = $this->platRepo->findAll();
 
-        return $this->render('accueil/plat.html.twig', [
+        return $this->render('accueil/plats.html.twig', [
             'plats' => $plats,
+        ]);
+    }
+
+    #[Route('/categories', name: 'app_categories')]
+    public function categories(): Response
+    {
+        $categories = $this->categorieRepo->findAll();
+
+        return $this->render('accueil/categories.html.twig', [
+            'categories' => $categories,
         ]);
     }
 }
