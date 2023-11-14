@@ -14,7 +14,7 @@
 
                 {{ form_errors(registrationForm) }}
 
-                {{ form_start(registrationForm) }}
+               {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
                     <div class="mb-3">
                         {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
                     </div>
@@ -38,11 +38,14 @@
                         {{ form_row(registrationForm.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
                     </div>
 
-                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                    {{ form_row(registrationForm.agreeTerms) }} {# Ne pas ajouter manuellement #}
+
+                    <!-- <button type="submit" class="btn btn-primary">S'inscrire</button> -->
                 {{ form_end(registrationForm) }}
             </div>
         </div>
     </div>
 {% endblock %}
+
 
 
