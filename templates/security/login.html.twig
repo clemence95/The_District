@@ -1,0 +1,21 @@
+{# templates/security/login.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Connectez-vous</h2>
+
+    {# Votre formulaire de connexion ici #}
+
+    {# Exemple simple de formulaire de connexion #}
+    <form method="post">
+        <label for="username">Nom d'utilisateur:</label>
+        <input type="text" id="username" name="_username" required>
+
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" name="_password" required>
+
+        <button type="submit">Se connecter</button>
+    </form>
+{% endblock %}
+
