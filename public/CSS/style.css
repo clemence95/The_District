@@ -79,7 +79,12 @@ body {
 }
 /* Fin banner */
 
-.card:hover {
-    transform: scale(1.05); /* Increase the scale on hover */
-    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+.zoom {
+    transition: transform 0.3s; /* Durée de la transition */
 }
+
+.zoom:hover {
+    transform: scale(1.1); /* Ajustez le niveau de zoom au survol */
+}
+
+
