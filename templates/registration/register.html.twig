@@ -20,19 +20,22 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe</label>
                         {{ form_row(registrationForm.plainPassword, {
-                            'label': false,
+                            'label': 'Mot de passe',
                             'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}
                         }) }}
                     </div>
 
-                    <div class="mb-3 form-check">
-                        {{ form_row(registrationForm.agreeTerms, {
-                            'label': 'Accepter les conditions',
-                            'label_attr': {'class': 'form-check-label'},
-                            'attr': {'class': 'form-check-input'}
-                        }) }}
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
                     </div>
 
                     <button type="submit" class="btn btn-primary">S'inscrire</button>
@@ -41,3 +44,5 @@
         </div>
     </div>
 {% endblock %}
+
+
