@@ -38,3 +38,6 @@ app_contact:
     path: /contact
     controller: App\Controller\ContactController::index
 
+login:
+    path: /login
+    controller: Symfony\Bundle\FrameworkBundle\Controller\SecurityController::login
