@@ -37,6 +37,7 @@ class RegistrationController extends AbstractController
         // Traite la requête pour vérifier si le formulaire a été soumis
         $form->handleRequest($request);
 
+        // Vérifie si le formulaire a été soumis et s'il est valide
         if ($form->isSubmitted() && $form->isValid()) {
             // Encode le mot de passe en clair
             $user->setPassword(
@@ -91,4 +92,5 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('app_register');
     }
 }
+
 

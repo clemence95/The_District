@@ -1,23 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+    <div class="container mt-5 dancing">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center mb-4">Inscription</h2>
 
-    <h1>Register</h1>
+                {% for flash_error in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
 
-    {{ form_errors(registrationForm) }}
+                {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                {{ form_start(registrationForm) }}
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+                    </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                    <div class="mb-3">
+                        <label for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe</label>
+                        {{ form_row(registrationForm.plainPassword, {
+                            'label': false,
+                            'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}
+                        }) }}
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        {{ form_row(registrationForm.agreeTerms, {
+                            'label': 'Accepter les conditions',
+                            'label_attr': {'class': 'form-check-label'},
+                            'attr': {'class': 'form-check-input'}
+                        }) }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">S'inscrire</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
