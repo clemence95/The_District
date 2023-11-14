@@ -4,4 +4,37 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+# config/routes.yaml
+
+app_home:
+    path: /
+    controller: App\Controller\AccueilController::accueil
+
+app_plats:
+    path: /plats
+    controller: App\Controller\AccueilController::plats
+
+app_plats_categorie:
+    path: /plats/{categorie_id}
+    controller: App\Controller\AccueilController::platsParCategorie
+
+app_categories:
+    path: /categories
+    controller: App\Controller\AccueilController::categories
+
+app_panier_ajout:
+    path: /panier/ajout/{id}
+    controller: App\Controller\PanierController::ajout
+
+app_panier:
+    path: /panier
+    controller: App\Controller\PanierController::index
+
+app_commande:
+    path: /commande
+    controller: App\Controller\CommandeController::index
+
+app_contact:
+    path: /contact
+    controller: App\Controller\ContactController::index
 
