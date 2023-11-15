@@ -24,7 +24,7 @@ class AccueilController extends AbstractController
         $this->categorieRepo = $categorieRepo;
         $this->em = $em;
     }
-    #[Route('/accueil', name: 'app_accueil')]
+    #[Route('/', name: 'app_accueil')]
     public function index(): Response
     {
         $plats = $this->platRepo->findAll();
