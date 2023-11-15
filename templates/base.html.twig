@@ -16,20 +16,20 @@
     </head>
     <body>
         <header>
-       <nav class="cc-navbar navbar navbar-expand-lg navbar-dark md-3">
+      <nav class="cc-navbar navbar navbar-expand-lg navbar-dark md-3">
     <div class="container-fluid">
-        <a class="navbar-brand text-uppercase mx-4 py-3 dancing" href="./accueil.php">The Destrict</a>
+        <a class="navbar-brand text-uppercase mx-4 py-3 dancing" href="{{ path('app_accueil') }}">The Destrict</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-3 mb-lg-0 sm-3">
                 <li class="nav-item pe-4">
-                 <a class="nav-link active dancing" href="{{ path('app_accueil') }}">Accueil</a>
+                    <a class="nav-link active dancing" href="{{ path('app_accueil') }}">Accueil</a>
                 </li>
-              <li class="nav-item pe-4">
-    <a class="nav-link active dancing" href="{{ path('app_register') }}">Inscription</a>
-</li>
+                <li class="nav-item pe-4">
+                    <a class="nav-link active dancing" href="{{ path('app_register') }}">Inscription</a>
+                </li>
 
                 <li class="nav-item pe-4">
                     <a class="nav-link dancing" href="{{ path('app_categories') }}">Catégorie</a>
@@ -40,13 +40,20 @@
                 <li class="nav-item pe-4">
                     <a class="nav-link dancing" href="{{ path('app_contact') }}">Nous Contacter</a>
                 </li>
-                <li class="nav-item pe-4">
-                    <a class="btn btn-order rounded-1 dancing" href="#">Passer la commande</a>
-                </li>
+                {% if is_granted('ROLE_USER') %}
+                    <li class="nav-item pe-4">
+                        <a class="nav-link dancing" href="{{ path('app_logout') }}">Se déconnecter</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item pe-4">
+                        <a class="btn btn-order rounded-1 dancing" href="{{ path('app_login') }}">Se connecter</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
 </nav>
+
 </header>
         {% block body %}{% endblock %}
 
