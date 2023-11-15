@@ -41,3 +41,8 @@ app_contact:
 app_login:
     path: /login
     controller: App\Controller\SecurityController::login
+    
+plat_details:
+    path: '/plat/{id}'
+    controller: 'App\Controller\AccueilController::platDetails'
+

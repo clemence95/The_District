@@ -19,7 +19,6 @@ class AccueilController extends AbstractController
 
     public function __construct(PlatRepository $platRepo, CategorieRepository $categorieRepo, EntityManagerInterface $em)
     {
-
         $this->platRepo = $platRepo;
         $this->categorieRepo = $categorieRepo;
         $this->em = $em;
@@ -27,8 +26,8 @@ class AccueilController extends AbstractController
     #[Route('/', name: 'app_accueil')]
     public function index(): Response
     {
-        $plats = $this->platRepo->findAll();
-        $categories = $this->categorieRepo->findAll();
+        $plats = $this->platRepo->findBy([],[],5);
+        $categories = $this->categorieRepo->findBy([],[],3);
         //   dd($categories);
 
         // ...
@@ -58,4 +57,5 @@ class AccueilController extends AbstractController
             'categories' => $categories,
         ]);
     }
+    
 }

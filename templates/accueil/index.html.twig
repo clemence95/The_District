@@ -23,13 +23,13 @@
     {# Affiche la liste des Catégories #}
 <section class="Catégories bg-dark-subtil Lugrasimo py-5">
     <h1 class="text-center dancing"><a href="#">Catégories</a></h1>
-    <div class="container d-flex justify-content-center">
-        <div class="row g-4">
+    <div class="container justify-content-center">
+        <div class="row g-4 d-flex justify-content-center">
             {% for categorie in categories %}
-                <div class="col-md-4">
-                    <div class="card zoom" style="background-image: url('{{ asset('IMG/' ~ categorie.image) }}'); background-size: cover; height: 300px;">
+                <div class="col-md-3 d-flex">
+                    <div class="card zoom w-100 h-100" style="background-image: url('{{ asset('IMG/' ~ categorie.image) }}'); background-size: cover; height: 300px;">
                         <div class="card-body custom-card-body">
-                            <h5 class="card-title text-center" style="line-height: 6;"><a href="#">{{ categorie.libelle }}</a></h5>
+                            <h5 class="card-title text-center" style="line-height: 10.5;"><a href="#">{{ categorie.libelle }}</a></h5>
                         </div>
                     </div>
                 </div>
@@ -42,13 +42,13 @@
 <section class="Plats bg-dark-subtil Lugrasimo py-5">
     <h1 class="text-center dancing"><a href="#">Plats</a></h1>
     <div class="container d-flex justify-content-center">
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             {% for plat in plats %}
                 <div class="col-md-3">
-                    <div class="card zoom" style="background-image: url('{{ asset('/IMG/' ~ plat.image) }}'); background-size: cover; height: 300px;">
+                    <div class="card zoom w-100 h-100" style="background-image: url('{{ asset('/IMG/' ~ plat.image) }}'); background-size: cover; height: 300px;">
                         <div class="card-body custom-card-body">
-                            <h5 class="card-title text-center" style="line-height: 1;"><a href="#">{{ plat.libelle }}</a></h5>
-                            <p class="card-text text-center" style="line-height: 16;">{{ plat.prix }} €</p>
+                            <h5 class="card-title text-center" style="line-height: 5;"><a href="#">{{ plat.libelle }}</a></h5>
+                            <p class="card-text text-center" style="line-height: 6;">{{ plat.prix }} €</p>
                         </div>
                     </div>
                 </div>
