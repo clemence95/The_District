@@ -18,7 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer, MailService $mailService): Response
     {
         $form = $this->createForm(ContactFormType::class);
         // dd($form);
@@ -39,20 +39,13 @@ class ContactController extends AbstractController
             $entityManager->flush();
 
             // Créez un e-mail avec la classe TemplatedEmail
-            $email = (new TemplatedEmail())
-                ->from($data->getEmail())
-                ->to('destinataire@email.com')
-                ->subject($data->getObjet())
-                ->htmlTemplate('emails/contact_mail.html.twig')
-                ->context([
-                    'user_email' => $data->getEmail(), // Accédez à la propriété 'user_email' de l'objet Contact
-                    'subject' => $data->getObjet(),
-                    'message' => $data->getMessage(), // Accédez à la propriété 'message' de l'objet Contact
-
-                ]);
-
-            // Envoyez l'e-mail
-            $mailer->send($email);
+             // Utilisez le service MailService pour envoyer l'e-mail
+             $mailService->sendContactEmail(
+                $data->getEmail(),
+                'destinataire@email.com',
+                $data->getObjet(),
+                $data->getMessage()
+            );
 
 
             // Redirection vers la page d'accueil
