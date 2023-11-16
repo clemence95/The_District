@@ -23,7 +23,7 @@ class MailService
             ->from($from)
             ->to($to)
             ->subject($subject)
-            ->htmlTemplate('emails/contact_mail.html.twig') // Le template Twig à utiliser
+            ->htmlTemplate('emails/contact_mail.html.twig') //  template Twig à utiliser
             ->context([
                 'user_email' => $from,
                 'subject' => $subject,
