@@ -46,13 +46,17 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            // Attribue le rôle "ROLE_USER"
+            $user->setRoles(['ROLE_USER']);
 
             // Persiste l'utilisateur dans la base de données
             $entityManager->persist($user);
             $entityManager->flush();
 
             // Génère une URL signée et l'envoie par email à l'utilisateur
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
                 (new TemplatedEmail())
                     ->from(new Address('mailer@your-domain.com', 'District'))
                     ->to($user->getEmail())
@@ -92,5 +96,3 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('app_register');
     }
 }
-
-
