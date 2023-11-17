@@ -41,7 +41,7 @@
                 </li>
                 {% if is_granted('ROLE_USER') %}
             <li class="nav-item pe-4">
-                <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+               <a class="btn btn-order rounded-1" href="{{ path('page_panier') }}">Panier</a>
             </li>
         {% else %}
             <li class="nav-item pe-4">
