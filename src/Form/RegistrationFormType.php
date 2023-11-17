@@ -25,7 +25,6 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Email',
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez fournir une adresse e-mail.']),
-                    // new Email(['message' => 'L\'adresse e-mail "{{ value }}" n\'est pas valide.']),
                 ],
             ])
             ->add('plainPassword', RepeatedType::class, [
@@ -35,12 +34,21 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('nom', null, [
                 'label' => 'Nom',
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez fournir un nom.']),
+                ],
             ])
             ->add('prenom', null, [
                 'label' => 'Prénom',
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez fournir un prénom.']),
+                ],
             ])
             ->add('adresse', null, [
                 'label' => 'Adresse',
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez fournir une adresse.']),
+                ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'J\'accepte les Conditions Générales d\'Utilisation',
