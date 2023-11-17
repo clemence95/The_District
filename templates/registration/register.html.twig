@@ -8,9 +8,12 @@
             <div class="col-md-6 offset-md-3">
                 <h2 class="text-center mb-4">Inscription</h2>
 
-                {% for flash_error in app.flashes('verify_email_error') %}
-                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-                {% endfor %}
+             {% for flash_error in app.flashes('verify_email_error') %}
+    <div class="alert text-red" role="alert">
+        <h4 class="alert-heading">Erreur(s) lors de la soumission du formulaire :</h4>
+        {{ flash_error }}
+    </div>
+{% endfor %}
 
                 {{ form_errors(registrationForm) }}
 

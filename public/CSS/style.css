@@ -9,7 +9,7 @@ body {
 /* style */
 .dancing {
     font-family: 'Dancing Script' !important;
-    color: white;
+    /* color: red !important; */
 }
 
 .Lugrasino {
@@ -85,6 +85,11 @@ body {
 
 .zoom:hover {
     transform: scale(1.1); /* Ajustez le niveau de zoom au survol */
+}
+
+.alert {
+    font-size: 18px; /* Ajoutez la taille de police que vous souhaitez */
+    color: red !important; /* Couleur du texte en rouge */
 }
 
 
