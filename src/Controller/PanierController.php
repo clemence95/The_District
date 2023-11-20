@@ -20,7 +20,18 @@ class PanierController extends AbstractController
     }
 
     /**
-     * @Route("/panier", name="page_panier")
+     * @Route("/panier", name="afficher_panier")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function index(): Response
+    {
+        $panier = $this->panierService->getPanier();
+
+        return $this->render('panier/index.html.twig', ['panier' => $panier]);
+    }
+
+    /**
+     * @Route("/ajouter-au-panier/{plat}", name="ajouter_au_panier")
      * @Security("is_granted('ROLE_USER')")
      */
     public function ajouterAuPanier($plat): Response
@@ -32,7 +43,8 @@ class PanierController extends AbstractController
 
         $this->addFlash('success', 'Plat ajouté au panier avec succès!');
 
-        return $this->redirectToRoute('liste_plats');
+        return $this->redirectToRoute('afficher_panier'); // Redirigez où vous le souhaitez après l'ajout au panier
     }
 }
+
 

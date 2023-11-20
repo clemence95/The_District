@@ -1,4 +1,4 @@
-{# templates/panier/afficher_panier.html.twig #}
+{# templates/panier/index.html.twig #}
 
 {% extends 'base.html.twig' %}
 
@@ -12,9 +12,13 @@
     {% else %}
         <ul>
             {% for plat in panier %}
-                <li>{{ plat }}</li>
+                <li>
+                    {{ plat.nom }} - {{ plat.prix }} €
+                    <a href="{{ path('retirer_du_panier', {'plat': plat.id}) }}">Retirer du panier</a>
+                </li>
             {% endfor %}
         </ul>
     {% endif %}
 {% endblock %}
+
 
