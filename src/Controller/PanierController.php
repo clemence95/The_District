@@ -23,11 +23,16 @@ class PanierController extends AbstractController
      * @Route("/panier", name="page_panier")
      * @Security("is_granted('ROLE_USER')")
      */
-    public function afficherPanier(): Response
+    public function ajouterAuPanier($plat): Response
     {
-        $panier = $this->panierService->getPanier();
+        // Vous pouvez ajouter une logique supplémentaire ici, par exemple, récupérer les détails du plat depuis la base de données
+        // puis ajouter le plat au panier
 
-        return $this->render('panier/afficher_panier.html.twig', ['panier' => $panier]);
+        $this->panierService->ajouterAuPanier($plat);
+
+        $this->addFlash('success', 'Plat ajouté au panier avec succès!');
+
+        return $this->redirectToRoute('liste_plats');
     }
 }
 

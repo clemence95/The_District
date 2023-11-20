@@ -22,10 +22,6 @@ app_categories:
     path: /categories
     controller: App\Controller\AccueilController::categories
 
-app_panier_ajout:
-    path: /panier/ajout/{id}
-    controller: App\Controller\PanierController::ajout
-
 app_panier:
     path: /panier
     controller: App\Controller\PanierController::index
@@ -49,3 +45,8 @@ plat_details:
 page_panier:
     path: /panier
     controller: App\Controller\PanierController::afficherPanier
+
+ajouter_au_panier:
+    path: /ajouter-au-panier/{plat}
+    controller: App\Controller\PanierController::ajouterAuPanier
+
