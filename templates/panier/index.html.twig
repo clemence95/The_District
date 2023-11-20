@@ -5,25 +5,27 @@
 {% block title %}Panier{% endblock %}
 
 {% block body %}
-    <h1 class="text-white">Votre Panier</h1>
-
-    {{ dump(panier) }}
+    <h1 class="dancing text-white">Votre Panier</h1>
 
     {% if panier is empty %}
-        <p class="text-white">Le panier est vide.</p>
+        <p class="dancing text-white">Le panier est vide.</p>
     {% else %}
-        <ul>
+        <div class="card-deck"  style="width: 300px; height: 300px">
             {% for plat in panier %}
-                <li>
-                    {{ plat.nom }} - {{ plat.prix }} €
-                    <a href="{{ path('retirer_du_panier', {'plat': plat.id}) }}">Retirer du panier</a>
-                </li>
+                <div class="card">
+                    <img src="{{ asset('/IMG/' ~ plat.image) }}" class="card-img-custom"  style="width: 300px; height: 300px"; alt="{{ plat.libelle }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ plat.libelle }}</h5>
+                        <p class="card-text">Prix : {{ plat.prix }} €</p>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
-        {# Bouton de déconnexion #}
-        <a href="{{ path('app_logout') }}" class="btn btn-danger">Déconnexion</a>
+        </div>
     {% endif %}
 {% endblock %}
+
+
+
 
 
 

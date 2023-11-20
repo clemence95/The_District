@@ -9,7 +9,7 @@ body {
 /* style */
 .dancing {
     font-family: 'Dancing Script' !important;
-    /* color: red !important; */
+    color:white !important;
 }
 
 .Lugrasino {
@@ -91,6 +91,12 @@ body {
     font-size: 18px; /* Ajoutez la taille de police que vous souhaitez */
     color: red !important; /* Couleur du texte en rouge */
 }
+
+.card-img-custom{
+    background-size: cover;
+    height: 300px;
+}
+
 
 
 
