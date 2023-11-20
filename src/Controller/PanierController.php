@@ -4,26 +4,30 @@
 
 namespace App\Controller;
 
+use App\Service\PanierService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class PanierController extends AbstractController
 {
-    #[Route('/panier', name: 'app_panier')]
-    public function index(): Response
+    private $panierService;
+
+    public function __construct(PanierService $panierService)
     {
-        // Ajoutez votre logique pour afficher le contenu du panier
-        return $this->render('panier/index.html.twig', [
-            'controller_name' => 'PanierController',
-        ]);
+        $this->panierService = $panierService;
     }
 
-    #[Route('/panier/ajout/{id}', name: 'app_panier_ajout')]
-    public function ajout(int $id): Response
+    /**
+     * @Route("/panier", name="page_panier")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function afficherPanier(): Response
     {
-        // Ajoutez votre logique pour ajouter un plat au panier
-        return $this->redirectToRoute('app_panier');
+        $panier = $this->panierService->getPanier();
+
+        return $this->render('panier/afficher_panier.html.twig', ['panier' => $panier]);
     }
 }
 

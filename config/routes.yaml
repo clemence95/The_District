@@ -46,3 +46,6 @@ plat_details:
     path: '/plat/{id}'
     controller: 'App\Controller\AccueilController::platDetails'
 
+page_panier:
+    path: /panier
+    controller: App\Controller\PanierController::afficherPanier
