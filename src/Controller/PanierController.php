@@ -9,12 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
- 
+
 class PanierController extends AbstractController
 {
     private $panierService;
 
-    public function __construct( PanierService $panierService)
+    public function __construct(PanierService $panierService)
     {
         $this->panierService = $panierService;
     }
@@ -42,6 +42,17 @@ class PanierController extends AbstractController
 
         return $this->redirectToRoute('afficher_panier');
     }
+
+    /**
+     * @Route("/retirer-du-panier/{plat}", name="retirer_du_panier")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function retirerDuPanier($plat): Response
+    {
+        $this->panierService->retirerDuPanier($plat);
+
+        $this->addFlash('success', 'Plat retiré du panier avec succès!');
+
+        return $this->redirectToRoute('afficher_panier');
+    }
 }
-
-

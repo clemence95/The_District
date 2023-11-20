@@ -50,6 +50,20 @@ class PanierService
         }
     }
 
+    public function retirerDuPanier($platId): void
+    {
+        $session = $this->requestStack->getSession();
+        $panier = $this->getPanier();
+
+        $platIndex = array_search($platId, array_column($panier, 'id'));
+
+        if ($platIndex !== false) {
+            unset($panier[$platIndex]);
+            $panier = array_values($panier);
+            $session->set('panier', $panier);
+        }
+    }
+
     private function getPlatById($platId)
     {
         $session = $this->requestStack->getSession();
