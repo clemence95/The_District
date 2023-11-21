@@ -23,6 +23,12 @@ services:
             - '../src/Kernel.php'
 
     # Add more service definitions when explicit configuration is needed
+    App\Service\PanierService:
+        arguments:
+            $requestStack: '@request_stack'
+            $entityManager: '@doctrine.orm.entity_manager'
+    App\Entity\Plat:
+        public: true
 
 
 

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use App\Entity\Plat;
 
 class PanierController extends AbstractController
 {
@@ -44,12 +45,15 @@ class PanierController extends AbstractController
     }
 
     /**
-     * @Route("/retirer-du-panier/{plat}", name="retirer_du_panier")
+     * @Route("/retirer-du-panier/{platId}", name="retirer_du_panier")
      * @Security("is_granted('ROLE_USER')")
+     * @ParamConverter("plat", class="App\Entity\Plat", options={"id" = "platId"})
      */
-    public function retirerDuPanier($plat): Response
+    public function retirerDuPanier(Plat $plat): Response
     {
-        $this->panierService->retirerDuPanier($plat);
+        // Utilisez $plat dans votre logique pour retirer du panier
+
+        $this->panierService->retirerDuPanier($plat->getId());
 
         $this->addFlash('success', 'Plat retiré du panier avec succès!');
 

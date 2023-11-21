@@ -10,40 +10,26 @@
     {% if panier is empty %}
         <p class="dancing text-white">Le panier est vide.</p>
     {% else %}
-        <table class="table border border-dark bg-light">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Libelle</th>
-                    <th>Prix</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {# Boucle pour afficher chaque élément du panier #}
-                {% for plat in panier %}
-                    <tr>
-                        <td>
-                            {% if plat.image %}
-                                <img src="{{ asset('/IMG/' ~ plat.image)}}" alt="{{ plat.libelle }}" style="max-height: 50px;">
-                            {% else %}
-                                Aucune image disponible
-                            {% endif %}
-                        </td>
-                        <td>{{ plat.libelle }}</td>
-                        <td>{{ plat.prix }} €</td>
-                        <td>
-                            {# Liens pour ajouter, retirer ou supprimer des éléments du panier #}
-                            <a href="{{ path('ajouter_au_panier', { plat: plat.id }) }}" class="btn btn-dark">Ajouter</a>
-                            <a href="{{ path('retirer_du_panier', { plat: plat.id }) }}" class="btn btn-dark">Retirer</a>
-                            <a href="{{ path('supprimer_du_panier', { plat: plat.id }) }}" class="btn btn-danger">Supprimer</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="card-deck">
+            {% for plat in panier %}
+                <div class="card" style="width:300px; height:300px;">
+                    <img src="{{ asset('/IMG/' ~ plat.image)}}" class="card-img-top card-img-custom" alt="{{ plat.libelle }}" style="background-size: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ plat.libelle }}</h5>
+                        <p class="card-text">Prix : {{ plat.prix }} €</p>
+                        <p class="card-text">Quantité : {{ plat.quantite }}</p>
+                        <a href="{{ path('retirer_du_panier', {'platId': plat.id}) }}" class="btn btn-danger">-</a>
+                        <a href="{{ path('ajouter_au_panier', {'plat': plat.id}) }}" class="btn btn-success">+</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 {% endblock %}
+
+
+
+
 
 
 
