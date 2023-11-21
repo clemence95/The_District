@@ -55,8 +55,10 @@ liste_plats:
     controller: App\Controller\PlatController::listePlats
 
 retirer_du_panier:
-    path: /retirer-du-panier/{platId}
-    controller: App\Controller\PanierController::retirerDuPanier
+    path: /retirer-du-panier/{id}
+    controller: App\Controller\PanierController::remove
+
+
 
 
 

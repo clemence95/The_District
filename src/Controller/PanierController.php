@@ -45,11 +45,11 @@ class PanierController extends AbstractController
     }
 
     /**
-     * @Route("/retirer-du-panier/{platId}", name="retirer_du_panier")
+     * @Route("/retirer-du-panier/{id}", name="retirer_du_panier")
      * @Security("is_granted('ROLE_USER')")
-     * @ParamConverter("plat", class="App\Entity\Plat", options={"id" = "platId"})
+     * @ParamConverter("plat", class="App\Entity\Plat", options={"id" = "id"})
      */
-    public function retirerDuPanier(Plat $plat): Response
+    public function remove(Plat $plat): Response
     {
         // Utilisez $plat dans votre logique pour retirer du panier
 

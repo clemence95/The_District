@@ -64,17 +64,20 @@ class PanierService
 
     public function retirerDuPanier($platId): void
     {
-        $session = $this->requestStack->getSession();
         $panier = $this->getPanier();
     
         // Recherchez le plat dans le panier
         foreach ($panier as $key => $platItem) {
-            if ($platItem['id'] === $platId) {
+            // dd($panier);
+            
+            if ($platItem['id'] == $platId) {
                 // Vérifiez si la quantité est supérieure à 1
                 if ($panier[$key]['quantite'] > 1) {
                     // Si oui, décrémentez la quantité
                     $panier[$key]['quantite']--;
+                    // dd($panier[$key]);
                 } else {
+                   
                     // Sinon, supprimez le plat du panier
                     unset($panier[$key]);
                 }
@@ -84,10 +87,9 @@ class PanierService
         }
     
         // Mettez à jour le panier dans la session
-        $session->set('panier', $panier);
+        $this->requestStack->getSession()->set('panier', $panier);
     }
     
-
     private function getPlatIndexInPanier($platId)
     {
         $panier = $this->getPanier();

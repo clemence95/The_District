@@ -18,7 +18,7 @@
                         <h5 class="card-title">{{ plat.libelle }}</h5>
                         <p class="card-text">Prix : {{ plat.prix }} €</p>
                         <p class="card-text">Quantité : {{ plat.quantite }}</p>
-                        <a href="{{ path('retirer_du_panier', {'platId': plat.id}) }}" class="btn btn-danger">-</a>
+                        <a href="{{ path('retirer_du_panier', {'id': plat.id}) }}" class="btn btn-danger">-</a>
                         <a href="{{ path('ajouter_au_panier', {'plat': plat.id}) }}" class="btn btn-success">+</a>
                     </div>
                 </div>
