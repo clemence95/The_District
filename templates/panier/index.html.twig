@@ -11,21 +11,29 @@
         <p class="dancing text-white">Le panier est vide.</p>
     {% else %}
         <div class="card-deck">
-            {% for plat in panier %}
-                <div class="card" style="width:300px; height:300px;">
-                    <img src="{{ asset('/IMG/' ~ plat.image)}}" class="card-img-top card-img-custom" alt="{{ plat.libelle }}" style="background-size: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ plat.libelle }}</h5>
-                        <p class="card-text">Prix : {{ plat.prix }} €</p>
-                        <p class="card-text">Quantité : {{ plat.quantite }}</p>
-                        <a href="{{ path('retirer_du_panier', {'id': plat.id}) }}" class="btn btn-danger">-</a>
-                        <a href="{{ path('ajouter_au_panier', {'plat': plat.id}) }}" class="btn btn-success">+</a>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for plat in panier %}
+                    <div class="col mb-4">
+                        <div class="card" style="width:300px; height:auto;">
+                            <img src="{{ asset('/IMG/' ~ plat.image)}}" class="card-img-top card-img-custom" alt="{{ plat.libelle }}" style="background-size: cover;">
+                            <div class="card-body text-black">
+                                <h5 class="card-title">{{ plat.libelle }}</h5>
+                                <p class="card-text">Prix : {{ plat.prix }} €</p>
+                                <p class="card-text">Quantité : {{ plat.quantite }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="{{ path('retirer_du_panier', {'id': plat.id}) }}" class="btn btn-danger">-</a>
+                                    <a href="{{ path('ajouter_au_panier', {'plat': plat.id}) }}" class="btn btn-success">+</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     {% endif %}
 {% endblock %}
+
+
 
 
 
