@@ -66,26 +66,27 @@ class PanierService
     {
         $session = $this->requestStack->getSession();
         $panier = $this->getPanier();
-
+    
         // Recherchez le plat dans le panier
         foreach ($panier as $key => $platItem) {
             if ($platItem['id'] === $platId) {
-                // Décrémentez la quantité du plat dans le panier
-                $panier[$key]['quantite']--;
-
-                // Si la quantité atteint zéro, retirez le plat du panier
-                if ($panier[$key]['quantite'] <= 0) {
+                // Vérifiez si la quantité est supérieure à 1
+                if ($panier[$key]['quantite'] > 1) {
+                    // Si oui, décrémentez la quantité
+                    $panier[$key]['quantite']--;
+                } else {
+                    // Sinon, supprimez le plat du panier
                     unset($panier[$key]);
                 }
-
+    
                 break; // Sortez de la boucle dès que le plat est trouvé
             }
         }
-
+    
         // Mettez à jour le panier dans la session
         $session->set('panier', $panier);
     }
-
+    
 
     private function getPlatIndexInPanier($platId)
     {
@@ -103,10 +104,15 @@ class PanierService
 
     private function getPlatById($platId)
     {
-        // Implémentez la logique pour récupérer un plat par ID depuis la base de données
-        // ...
+        // Recherchez un plat par ID depuis la base de données
+        $plat = $this->entityManager->getRepository(Plat::class)->find($platId);
 
-        return $this->entityManager->getRepository(Plat::class)->find($platId);
+        // Vérifiez si le plat existe
+        if (!$plat) {
+            throw new \Exception('Plat non trouvé avec l\'ID ' . $platId);
+        }
+
+        return $plat;
     }
 
     // Ajoutez d'autres méthodes de gestion du panier au besoin
