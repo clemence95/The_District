@@ -26,7 +26,7 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                target: app_accueil
+                target: app_home
 
             remember_me:
                 secret: '%kernel.secret%'
@@ -55,7 +55,7 @@ security:
          - { path: ^/chef, roles: ROLE_CHEF }
          - { path: ^/client, roles: ROLE_CLIENT }
          - { path: ^/profile, roles: ROLE_USER }
-         - { path: ^/panier, roles: ROLE_USER }
+        #  - { path: ^/panier, roles: ROLE_USER }
 
 
 when@test:

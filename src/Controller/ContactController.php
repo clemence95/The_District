@@ -49,7 +49,7 @@ class ContactController extends AbstractController
 
 
             // Redirection vers la page d'accueil
-            return $this->redirectToRoute('app_accueil');
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('contact/index.html.twig', [

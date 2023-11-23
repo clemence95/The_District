@@ -66,7 +66,7 @@ class RegistrationController extends AbstractController
             // Faites tout autre traitement nécessaire ici, comme l'envoi d'un email
 
             // Redirige l'utilisateur vers la page d'accueil après une inscription réussie
-            return $this->redirectToRoute('app_accueil');
+            return $this->redirectToRoute('app_home');
         }
 
         // Affiche le formulaire d'inscription s'il n'est pas valide
