@@ -23,7 +23,7 @@ class AccueilController extends AbstractController
         $this->categorieRepo = $categorieRepo;
         $this->em = $em;
     }
-    #[Route('/', name: 'app_accueil')]
+    #[Route('/', name: 'app_home')]
     public function index(): Response
     {
         $plats = $this->platRepo->findBy([],[],5);

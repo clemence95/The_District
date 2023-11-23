@@ -18,14 +18,14 @@
     <header>
         <nav class="cc-navbar navbar navbar-expand-lg navbar-dark md-3">
             <div class="container-fluid">
-                <a class="navbar-brand text-uppercase mx-4 py-3 dancing" href="{{ path('app_accueil') }}">The Destrict</a>
+                <a class="navbar-brand text-uppercase mx-4 py-3 dancing" href="{{ path('app_home') }}">The Destrict</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse dancing" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-3 mb-lg-0 sm-3">
                         <li class="nav-item pe-4">
-                            <a class="nav-link active" href="{{ path('app_accueil') }}">Accueil</a>
+                            <a class="nav-link active" href="{{ path('app_home') }}">Accueil</a>
                         </li>
                         {% if is_granted('ROLE_USER') %}
                         <li class="nav-item pe-4">
