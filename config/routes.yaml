@@ -8,7 +8,7 @@ controllers:
 
 app_home:
     path: /
-    controller: App\Controller\AccueilController::accueil
+    controller: App\Controller\AccueilController::index
 
 app_plats:
     path: /plats
@@ -42,17 +42,9 @@ plat_details:
     path: '/plat/{id}'
     controller: 'App\Controller\AccueilController::platDetails'
 
-afficher_panier:
-    path: /panier
-    controller: App\Controller\PanierController::index
-
 ajouter_au_panier:
     path: /ajouter-au-panier/{plat}
     controller: App\Controller\PanierController::ajouterAuPanier
-
-liste_plats:
-    path: /plats
-    controller: App\Controller\PlatController::listePlats
 
 retirer_du_panier:
     path: /retirer-du-panier/{id}

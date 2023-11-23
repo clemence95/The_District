@@ -41,7 +41,7 @@ class PanierController extends AbstractController
 
         $this->addFlash('success', 'Plat ajouté au panier avec succès!');
 
-        return $this->redirectToRoute('afficher_panier');
+        return $this->redirectToRoute('app_panier');
     }
 
     /**
@@ -57,6 +57,6 @@ class PanierController extends AbstractController
 
         $this->addFlash('success', 'Plat retiré du panier avec succès!');
 
-        return $this->redirectToRoute('afficher_panier');
+        return $this->redirectToRoute('app_panier');
     }
 }
