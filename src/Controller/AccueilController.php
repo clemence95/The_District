@@ -30,15 +30,13 @@ class AccueilController extends AbstractController
         $categories = $this->categorieRepo->findBy([],[],3);
         //   dd($categories);
 
-        // ...
-
         return $this->render('accueil/index.html.twig', [
             'categories' => $categories,
             'plats' => $plats,
         ]);
     }
 
-    #[Route('/plats', name: 'app_plats')]
+    #[Route('/plats', name: 'app_listePlats')]
     public function plats(): Response
     {
         $plats = $this->platRepo->findAll();
@@ -48,7 +46,7 @@ class AccueilController extends AbstractController
         ]);
     }
 
-    #[Route('/categories', name: 'app_categories')]
+    #[Route('/categories', name: 'app_listeCategories')]
     public function categories(): Response
     {
         $categories = $this->categorieRepo->findAll();

@@ -12,7 +12,7 @@ app_home:
 
 app_plats:
     path: /plats
-    controller: App\Controller\AccueilController::plats
+    controller: App\Controller\AccueilController::listePlats
 
 app_plats_categorie:
     path: /plats/{categorie_id}
@@ -20,7 +20,7 @@ app_plats_categorie:
 
 app_categories:
     path: /categories
-    controller: App\Controller\AccueilController::categories
+    controller: App\Controller\AccueilController::listeCategories
 
 app_panier:
     path: /panier
