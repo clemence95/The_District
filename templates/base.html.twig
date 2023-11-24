@@ -50,9 +50,6 @@
                         </li>
                         {% if is_granted('ROLE_USER') %}
                         <li class="nav-item pe-4">
-                            <a class="btn btn-order rounded-1" href="{{ path('app_panier') }}">Panier</a>
-                        </li>
-                        <li class="nav-item pe-4">
                             <a class="btn btn-danger rounded-1" href="{{ path('app_logout') }}">Déconnexion</a>
                         </li>
                         {% else %}
