@@ -52,7 +52,7 @@ retirer_du_panier:
 
 commande_afficher_formulaire:
     path: '/commande/afficher-formulaire'
-    controller: 'App\Controller\CommandeController::afficherFormulaire'
+    controller: 'App\Controller\CommandeController::validerCommande'
 
 valider_commande:
     path: '/valider-commande'
