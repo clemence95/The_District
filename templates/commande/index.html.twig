@@ -8,6 +8,7 @@
     <!-- Affichage des détails des plats dans le panier -->
     <div class="card-deck">
         <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% set totalPrixPlats = 0 %} {# Initialisez le total avant la boucle #}
             {% for plat in panier %}
                 <div class="col mb-4">
                     <div class="card" style="width:300px; height:auto;">
@@ -18,13 +19,17 @@
                             <p class="card-text text-black">Quantité : {{ plat.quantite }}</p>
                         </div>
                     </div>
+                    {% set totalPrixPlats = totalPrixPlats + (plat.prix * plat.quantite) %} {# Ajoutez le prix du plat à chaque itération #}
                 </div>
             {% endfor %}
         </div>
     </div>
 
+    <!-- Affichage du total du prix des plats après la boucle -->
+    <p class="text-white">Total : {{ totalPrixPlats }} €</p>
+
     <!-- Formulaire de validation de commande -->
-    <form action="{{ path('commande_valider') }}" method="post">
+    <form action="{{ path('commande_valider') }}" method="post" class="text-white">
         {{ form_start(form) }}
 
         <!-- Ajoutez ici les champs d'adresse de livraison, adresse de facturation, mode de paiement, etc. -->
@@ -42,6 +47,7 @@
         {{ form_end(form) }}
     </form>
 {% endblock %}
+
 
 
 

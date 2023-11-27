@@ -1,6 +1,8 @@
 <?php
 // src/Controller/CommandeController.php
 
+// src/Controller/CommandeController.php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,13 +23,24 @@ class CommandeController extends AbstractController
         // Traitez le formulaire s'il a été soumis
         $form->handleRequest($request);
 
+        // Récupérez le panier
+        $panier = $panierService->getPanier();
+
+        // Calculez le total du prix des plats dans le panier
+        $totalPrixPlats = 0;
+        foreach ($panier as $plat) {
+            $totalPrixPlats += $plat['prix'] * $plat['quantite'];
+        }
+
         // Votre logique pour valider la commande
 
         return $this->render('commande/index.html.twig', [
-            'panier' => $panierService->getPanier(),
-            'form' => $form->createView(), // Transmettez le formulaire au modèle
+            'panier' => $panier,
+            'form' => $form->createView(),
+            'totalPrixPlats' => $totalPrixPlats, // Transmettez le total du prix des plats au modèle
         ]);
     }
+
     // ... autres actions de votre contrôleur
 }
 
