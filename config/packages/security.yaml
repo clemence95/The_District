@@ -55,7 +55,7 @@ security:
          - { path: ^/chef, roles: ROLE_CHEF }
          - { path: ^/client, roles: ROLE_CLIENT }
          - { path: ^/profile, roles: ROLE_USER }
-        #  - { path: ^/panier, roles: ROLE_USER }
+         - { path: ^/commande, roles: ROLE_USER }
 
 
 when@test:

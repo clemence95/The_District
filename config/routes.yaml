@@ -50,6 +50,16 @@ retirer_du_panier:
     path: /retirer-du-panier/{id}
     controller: App\Controller\PanierController::remove
 
+commande_afficher_formulaire:
+    path: '/commande/afficher-formulaire'
+    controller: 'App\Controller\CommandeController::afficherFormulaire'
+
+valider_commande:
+    path: '/valider-commande'
+    controller: 'App\Controller\CommandeController::validerCommande'
+    methods: ['POST']
+
+
 
 
 
