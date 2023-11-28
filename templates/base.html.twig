@@ -6,8 +6,8 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/dist/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
     {% block stylesheets %}
     {% endblock %}
     {% block javascripts %}
@@ -18,60 +18,12 @@
     <header>
         {% include 'nav.html.twig' %}
     </header>
-    <footer class="bg-dark py-3 fixed-bottom bg-transparent bg-opacity-75">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-4">
-                <h5 class="text-white">Suivez-nous</h5>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="text-white"><i class="bi bi-geo-alt"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5 class="text-white">Liens utiles</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">Conditions générales</a></li>
-                    <li><a href="#" class="text-white">Politique de confidentialité</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5 class="text-white">Contact</h5>
-                <p class="text-white">Adresse<br>Téléphone<br>Email</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-    <!-- <footer>
-        <div class="container">
-            <div class="row">
-                <div class="footer md-3 w-100 bg-dark-subtle">
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item">
-                            <a href="#"><i class="bi bi-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#"><i class="bi bi-geo-alt"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#"><i class="bi bi-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer> -->
-    {% block body %}
+        {% block body %}
     {% endblock %}
 
+<footer>
+{% include 'footer.html.twig'%}
+</footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-H+K6lKuE2JdklqiYiqbZJ3uycmdWl9AdQqlJBhqqCcE=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXlwVQ8KR3lZB4B5ZvUp2W6jmgJXW8lN2vc3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-b0L9+8fWU2zrCcwyF6yA6IVvZwFAfu4zg5+djUEGwHCR2RvJS3lvnD5m6Uu3GvY4" crossorigin="anonymous"></script>
