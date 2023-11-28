@@ -117,5 +117,12 @@ class PanierService
         return $plat;
     }
 
+    public function viderPanier(): void
+    {
+        // Logique pour vider le panier
+        $session = $this->requestStack->getSession();
+        $session->remove('panier');
+    }
+    
     // Ajoutez d'autres méthodes de gestion du panier au besoin
 }
