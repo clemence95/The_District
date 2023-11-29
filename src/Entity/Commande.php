@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CommandeRepository::class)]
 class Commande
 {
+    public const ETAT_EN_COURS_PREPARATION = 0;
+    public const ETAT_EN_COURS_LIVRAISON = 1;
+    public const ETAT_LIVREE = 2;
+    public const ETAT_ANNULEE = 3;
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
