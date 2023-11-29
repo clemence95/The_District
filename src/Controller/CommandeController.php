@@ -15,7 +15,6 @@ use Doctrine\ORM\EntityManagerInterface;
 
 // src/Controller/CommandeController.php
 
-// ... (imports)
 
 class CommandeController extends AbstractController
 {
