@@ -11,6 +11,7 @@ use App\Service\PanierService;
 use App\Form\CommandeType;
 use App\Entity\Detail;
 use App\Entity\Commande;
+use App\Entity\Plat;
 use Doctrine\ORM\EntityManagerInterface;
 
 // src/Controller/CommandeController.php
@@ -34,8 +35,8 @@ class CommandeController extends AbstractController
         $totalPrixPlats = 0;
         foreach ($panier as $panierItem) {
             // Assurez-vous que les clés 'plat' et 'quantite' existent dans $panierItem
-            if (isset($panierItem['plat'], $panierItem['quantite'])) {
-                $prix = floatval($panierItem['plat']['prix']); // ou (float)$panierItem['plat']['prix']
+            if (isset($panierItem['id'], $panierItem['quantite'])) {
+                $prix = floatval($panierItem['prix']); // ou (float)$panierItem['plat']['prix']
                 $quantite = $panierItem['quantite'];
                 $totalPrixPlats += $prix * $quantite;
             } else {
@@ -45,6 +46,8 @@ class CommandeController extends AbstractController
         
         // Votre logique pour valider la commande
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            // dd($panier);
             // Créez une nouvelle commande
             $commande = new Commande();
             $commande->setDateCommande(new \DateTime());
@@ -58,10 +61,11 @@ class CommandeController extends AbstractController
             // Utilisez l'ID de la commande pour lier les détails de la commande
             foreach ($panier as $panierItem) {
                 // Assurez-vous que les clés 'plat' et 'quantite' existent dans $panierItem
-                if (isset($panierItem['plat'], $panierItem['quantite'])) {
+                if (isset($panierItem['id'], $panierItem['quantite'])) {
+                    $plat = $entityManager->getRepository(Plat::class)->find($panierItem['id']);
                     $detailsCommande = new Detail();
                     $detailsCommande->setCommande($commande);
-                    $detailsCommande->setPlat($panierItem['plat']);
+                    $detailsCommande->setPlat($plat);
                     $detailsCommande->setQuantite($panierItem['quantite']);
                     // ... autres propriétés des détails de la commande
 
