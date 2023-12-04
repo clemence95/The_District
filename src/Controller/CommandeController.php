@@ -55,7 +55,7 @@ class CommandeController extends AbstractController
             $commande = new Commande();
             $commande->setDateCommande(new \DateTime());
             $commande->setTotal($totalPrixPlats);
-            $commande->setEtat(0); // Mettez l'état initial de la commande
+            $commande->setEtat(0); // état initial de la commande
             $commande->setUtilisateur($this->getUser()); // Assurez-vous que vous avez un utilisateur connecté
 
             $entityManager->persist($commande);
@@ -85,15 +85,17 @@ class CommandeController extends AbstractController
             // Effacez le panier après la validation de la commande
             $panierService->viderPanier();
 
-            // Redirigez l'utilisateur vers une page de confirmation ou une autre page appropriée
+            // EventService confirmation commande
             $event = new \App\Events\OrderConfirmedEvent($commande);
             $eventDispatcher->dispatch($event, \App\Events\OrderConfirmedEvent::class);
-
-            $this->addFlash('commande-ok', 'Article Created! Knowledge is power!');
+            
+            //Redirection message flash page d'accueil
+            $this->addFlash('commande-ok', 'Commande enregistrée avec succès');
 
             return $this->redirectToRoute('app_home');
         }
-
+            
+        //Retourne le panier, le formulaire et le totale des prix sur la page commande
         return $this->render('commande/index.html.twig', [
             'panier' => $panier,
             'form' => $form->createView(),
