@@ -97,3 +97,7 @@ body {
     height: 300px;
 }
 
+.error-color{
+    color:red !important;
+}
+

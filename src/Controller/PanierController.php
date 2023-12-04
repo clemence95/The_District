@@ -39,7 +39,7 @@ class PanierController extends AbstractController
     {
         $this->panierService->ajouterAuPanier($plat);
 
-        $this->addFlash('success', 'Plat ajouté au panier avec succès!');
+        $this->addFlash('plat-ok', 'Plat ajouté au panier avec succès!');
 
         return $this->redirectToRoute('app_panier');
     }

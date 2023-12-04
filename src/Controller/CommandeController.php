@@ -89,6 +89,8 @@ class CommandeController extends AbstractController
             $event = new \App\Events\OrderConfirmedEvent($commande);
             $eventDispatcher->dispatch($event, \App\Events\OrderConfirmedEvent::class);
 
+            $this->addFlash('commande-ok', 'Article Created! Knowledge is power!');
+
             return $this->redirectToRoute('app_home');
         }
 

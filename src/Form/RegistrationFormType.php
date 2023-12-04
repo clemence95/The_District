@@ -26,6 +26,10 @@ class RegistrationFormType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez fournir une adresse e-mail.']),
                 ],
+                // 'attr' => [
+                //     'error-bubbling'=>true
+                // ],
+                
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,

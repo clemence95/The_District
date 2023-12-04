@@ -7,6 +7,13 @@
 {% block body %}
     <h1 class="dancing text-white">Votre Panier</h1>
 
+      {% for message in app.flashes('plat-ok') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+
     {% if panier is empty %}
         <p class="dancing text-white">Le panier est vide.</p>
     {% else %}

@@ -20,6 +20,12 @@
         </div>
     </section>
 
+    {% for message in app.flashes('commande-ok') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
     {# Affiche la liste des Catégories #}
 <section class="Catégories bg-dark-subtil Lugrasimo py-5">
     <h1 class="text-center dancing"><a href="#">Catégories</a></h1>
