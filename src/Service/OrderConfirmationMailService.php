@@ -18,7 +18,8 @@ class OrderConfirmationMailService
 
     public function sendOrderConfirmationEmail(Commande $order): void
     {
-        $userEmail = $order->getUtilisateur()->getEmail();
+        $user = $order->getUtilisateur();
+        $userEmail = $user->getEmail();
 
         $email = (new TemplatedEmail())
             ->from('your_email@example.com') // Remplacez par votre adresse e-mail

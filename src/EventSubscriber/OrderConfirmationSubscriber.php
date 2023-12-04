@@ -2,7 +2,6 @@
 
 // src/EventSubscriber/OrderConfirmationSubscriber.php
 
-// src/EventSubscriber/OrderConfirmationSubscriber.php
 
 namespace App\EventSubscriber;
 
