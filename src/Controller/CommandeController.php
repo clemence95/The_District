@@ -13,15 +13,18 @@ use App\Entity\Detail;
 use App\Entity\Commande;
 use App\Entity\Plat;
 use Doctrine\ORM\EntityManagerInterface;
-
-// src/Controller/CommandeController.php
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 
 class CommandeController extends AbstractController
 {
     #[Route('/valider-commande', name: 'commande_valider', methods: ['POST'])]
-    public function validerCommande(Request $request, PanierService $panierService, EntityManagerInterface $entityManager): Response
-    {
+    public function validerCommande(
+        Request $request,
+        PanierService $panierService,
+        EntityManagerInterface $entityManager,
+        EventDispatcherInterface $eventDispatcher
+    ): Response {
         // Créez une instance du formulaire
         $form = $this->createForm(CommandeType::class);
 
@@ -43,11 +46,11 @@ class CommandeController extends AbstractController
                 // Gérez le cas où une clé est manquante
             }
         }
-        
+
         // Votre logique pour valider la commande
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            // dd($panier);
+            // ...
+
             // Créez une nouvelle commande
             $commande = new Commande();
             $commande->setDateCommande(new \DateTime());
@@ -76,13 +79,16 @@ class CommandeController extends AbstractController
                     // Vous pouvez également ajouter une redirection vers une page d'erreur
                 }
             }
-            
+
             $entityManager->flush();
 
             // Effacez le panier après la validation de la commande
             $panierService->viderPanier();
 
             // Redirigez l'utilisateur vers une page de confirmation ou une autre page appropriée
+            $event = new \App\Events\OrderConfirmedEvent($commande);
+            $eventDispatcher->dispatch($event, \App\Events\OrderConfirmedEvent::class);
+
             return $this->redirectToRoute('app_home');
         }
 

@@ -29,6 +29,11 @@ services:
             $entityManager: '@doctrine.orm.entity_manager'
     App\Entity\Plat:
         public: true
+    App\EventSubscriber\OrderConfirmationSubscriber:
+        arguments:
+            $orderConfirmationMailService: '@App\Service\OrderConfirmationMailService'
+        tags:
+            - { name: 'kernel.event_subscriber' }
 
 
 
