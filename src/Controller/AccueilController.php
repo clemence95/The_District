@@ -20,8 +20,8 @@ class AccueilController extends AbstractController
     public function __construct(PlatRepository $platRepo, CategorieRepository $categorieRepo)
     {
         
-    }
-    {
+    
+    
         $entityManager = $this->getDoctrine()->getManager();
         $platRepository = $entityManager->getRepository('App\Entity\Plat');
         
