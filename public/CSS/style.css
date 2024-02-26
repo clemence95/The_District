@@ -9,7 +9,7 @@ body {
 /* style */
 .dancing {
     font-family: 'Dancing Script' !important;
-    color: white;
+    color:white !important;
 }
 
 .Lugrasino {
@@ -78,3 +78,26 @@ body {
     color: white;
 }
 /* Fin banner */
+
+.zoom {
+    transition: transform 0.3s; /* Durée de la transition */
+}
+
+.zoom:hover {
+    transform: scale(1.1); /* Ajustez le niveau de zoom au survol */
+}
+
+.alert {
+    font-size: 18px; /* Ajoutez la taille de police que vous souhaitez */
+    color: red !important; /* Couleur du texte en rouge */
+}
+
+.card-img-custom{
+    background-size: cover;
+    height: 300px;
+}
+
+.error-color{
+    color:red !important;
+}
+

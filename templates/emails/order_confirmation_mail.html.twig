@@ -1,0 +1,23 @@
+{# templates/emails/order_confirmation_mail.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation de commande</title>
+</head>
+<body>
+    <h1>Confirmation de commande</h1>
+    <p>Merci pour votre commande. Voici les détails :</p>
+
+    <p>
+        <strong>Numéro de commande :</strong> {{ order.id }}<br>
+        <strong>Date de commande :</strong> {{ order.dateCommande|date('Y-m-d H:i:s') }}<br>
+        <strong>Total :</strong> {{ order.total }} €<br>
+    </p>
+
+    <p>
+        Merci de faire affaire avec nous !
+    </p>
+</body>
+</html>

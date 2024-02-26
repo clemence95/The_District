@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="container mt-5 dancing">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center mb-4">Inscription</h2>
+
+             {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="alert text-red" role="alert">
+                    <h4 class="alert-heading">Erreur(s) lors de la soumission du formulaire :</h4>
+                    {{ flash_error }}
+                </div>
+            {% endfor %}
+                             
+
+               {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'} }) }}
+               <div class="error-color">
+                   {{ form_errors(registrationForm)}}  
+                </div>
+              
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.plainPassword, {
+                            'label': 'Mot de passe',
+                            'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}
+                        }) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.nom, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form_row(registrationForm.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+                    </div>
+
+                    {{ form_row(registrationForm.agreeTerms) }} {# Ne pas ajouter manuellement #}
+
+                    <!-- <button type="submit" class="btn btn-primary">S'inscrire</button> -->
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

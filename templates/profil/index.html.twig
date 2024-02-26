@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}The District{% endblock %}
 
 {% block body %}
 
@@ -28,6 +28,8 @@
                     </tbody>
                 </table>
 
+    {# Bouton de déconnexion #}
+                <a href="{{ path('app_logout') }}" class="btn btn-danger">Déconnexion</a>
             </div>
         </div>
     </div>

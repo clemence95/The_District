@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ta Page d'Accueil{% endblock %}
+
+{% block body %}
+    <section class="banner d-flex pt-5" style="width: 100%; position: relative;">
+        <div class="container-fluid my-5 py-4 d-flex justify-content-center align-items-center">
+            <div class="video-container d-flex justify-content-center" style="width: 100%;">
+                <video id="myVideo" class="d-block video rounded-5" autoplay muted loop style="width: 100%;">
+                    <source src="{{ asset('video/pizza-fond.mp4') }}" type="video/mp4">
+                    Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
+                </video>
+            </div>
+            <div class="form_button d-none d-sm-flex col-12 col-sm-6 mb-3 mb-sm-0" role="search" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <form>
+                    <input class="form-control" type="search" placeholder="Rechercher" aria-label="Search">
+                    <button class="btn btn-outline-success" style="width: 20vh; height: 30px;" type="submit">Recherche</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    {# Affiche la liste des Catégories #}
+<section class="Catégories bg-dark-subtil Lugrasimo py-5 mb-5">
+    <h1 class="text-center dancing"><a href="#">Catégories</a></h1>
+    <div class="container d-flex justify-content-center">
+        <div class="row g-4">
+            {% for categorie in categories %}
+                <div class="col-md-4">
+                    <div class="card zoom" style="background-image: url('{{ asset('IMG/' ~ categorie.image) }}'); background-size: cover; height: 300px;">
+                        <div class="card-body custom-card-body">
+                            <h5 class="card-title text-center" style="line-height: 6;"><a href="#">{{ categorie.libelle }}</a></h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
