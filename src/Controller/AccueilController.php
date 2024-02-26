@@ -19,9 +19,10 @@ class AccueilController extends AbstractController
 
     public function __construct(PlatRepository $platRepo, CategorieRepository $categorieRepo, EntityManagerInterface $em)
     {
+<<<<<<< HEAD
         
-    }
-    {
+    
+    
         $entityManager = $this->getDoctrine()->getManager();
         $platRepository = $entityManager->getRepository('App\Entity\Plat');
         
@@ -29,6 +30,18 @@ class AccueilController extends AbstractController
         $plats = $platRepository->getAllPlats();
 
         // ...
+=======
+        $this->platRepo = $platRepo;
+        $this->categorieRepo = $categorieRepo;
+        $this->em = $em;
+    }
+    #[Route('/', name: 'app_home')]
+    public function index(): Response
+    {
+        $plats = $this->platRepo->findBy([],[],5);
+        $categories = $this->categorieRepo->findBy([],[],3);
+        //   dd($categories);
+>>>>>>> 027809159bb4de3a2be831f924ca43d0f6337aae
 
         return $this->render('accueil/index.html.twig', [
             'categories' => $categories,
