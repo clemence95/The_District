@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use App\Repository\CategorieRepository;
 use App\Repository\PlatRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,20 +14,18 @@ class AccueilController extends AbstractController
 {
     private $platRepo;
     private $categorieRepo;
-    private $em;
 
-    public function __construct(PlatRepository $platRepo, CategorieRepository $categorieRepo, EntityManagerInterface $em)
+    public function __construct(PlatRepository $platRepo, CategorieRepository $categorieRepo)
     {
-        
-    
-    
-        $entityManager = $this->getDoctrine()->getManager();
-        $platRepository = $entityManager->getRepository('App\Entity\Plat');
-        
-        $categories = $platRepository->getAllCategories('NomCategorie');
-        $plats = $platRepository->getAllPlats();
+        $this->platRepo = $platRepo;
+        $this->categorieRepo = $categorieRepo;
+    }
 
-        // ...
+    #[Route('/', name: 'app_accueil')]
+    public function index(): Response
+    {
+        $categories = $this->categorieRepo->findAll();
+        $plats = $this->platRepo->findAll();
 
         return $this->render('accueil/index.html.twig', [
             'categories' => $categories,
@@ -55,5 +52,4 @@ class AccueilController extends AbstractController
             'categories' => $categories,
         ]);
     }
-    
 }
