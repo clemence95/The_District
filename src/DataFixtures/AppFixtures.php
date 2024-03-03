@@ -62,7 +62,7 @@ class AppFixtures extends Fixture
             ->setAdresse("3 rue des cailloux")
             ->setCp("80000")
             ->setVille("Amiens")
-            ->setRoles('ROLE_USER');
+            ->setRoles(['ROLE_USER']);
         $manager->persist($user1);
 
         $user2 = new Utilisateur();
@@ -75,7 +75,7 @@ class AppFixtures extends Fixture
             ->setAdresse("3 rue des cailloux")
             ->setCp("80000")
             ->setVille("Amiens")
-            ->setRoles('ROLE_USER');
+            ->setRoles(['ROLE_USER']);
         $manager->persist($user2);
 
         // Créez les commandes
