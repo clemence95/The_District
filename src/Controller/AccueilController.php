@@ -53,4 +53,3 @@ class AccueilController extends AbstractController
         ]);
     }
 }
-
