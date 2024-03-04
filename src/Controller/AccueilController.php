@@ -53,3 +53,4 @@ class AccueilController extends AbstractController
         ]);
     }
 }
+"symfony/runtime": "^6.3"
