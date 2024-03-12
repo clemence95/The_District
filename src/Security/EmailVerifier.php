@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -50,3 +49,4 @@ class EmailVerifier
         $this->entityManager->flush();
     }
 }
+
