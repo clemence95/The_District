@@ -1,46 +1,46 @@
-      <nav class="cc-navbar navbar navbar-expand-lg navbar-dark md-3 h-100">
-            <div class="container-fluid">
-                <a class="navbar-brand text-uppercase mx-4 py-3 dancing" href="{{ path('app_home') }}">The Destrict</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse dancing" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-3 mb-lg-0 sm-3">
-                        <li class="nav-item pe-4">
-                            <a class="nav-link active" href="{{ path('app_home') }}">Accueil</a>
-                        </li>
-                        {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item pe-4">
-                            <a class="nav-link active" href="{{ path('app_profil') }}">Profil</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item pe-4">
-                            <a class="nav-link active" href="{{ path('app_register') }}">Inscription</a>
-                        </li>
-                        {% endif %}
-                        <li class="nav-item pe-4">
-                            <a class="nav-link" href="{{ path('app_categories') }}">Catégories</a>
-                        </li>
-                        <li class="nav-item pe-4">
-                            <a class="nav-link" href="{{ path('app_plats') }}">Plats</a>
-                        </li>
-                        <li class="nav-item pe-4">
-                            <a class="nav-link" href="{{ path('app_contact') }}">Nous Contacter</a>
-                        </li>
-                        <li class="nav-item pe-4">
-                            <a class="btn btn-order rounded-1" href="{{ path('app_panier') }}">Panier</a>
-                        </li>
-                        {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item pe-4">
-                            <a class="btn btn-danger rounded-1" href="{{ path('app_logout') }}">Déconnexion</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item pe-4">
-                            <a class="btn btn-order rounded-1" href="{{ path('app_login') }}">Se connecter</a>
-                        </li>
-                        <!-- Ajoutez ici d'autres liens pour les utilisateurs non connectés -->
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<nav class="cc-navbar navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand text-uppercase mx-4 py-3 dancing" href="{{ path('app_home') }}">The District</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item pe-lg-4">
+                    <a class="nav-link active" href="{{ path('app_home') }}">Accueil</a>
+                </li>
+                {% if is_granted('ROLE_USER') %}
+                <li class="nav-item pe-lg-4">
+                    <a class="nav-link active" href="{{ path('app_profil') }}">Profil</a>
+                </li>
+                {% else %}
+                <li class="nav-item pe-lg-4">
+                    <a class="nav-link active" href="{{ path('app_register') }}">Inscription</a>
+                </li>
+                {% endif %}
+                <li class="nav-item pe-lg-4">
+                    <a class="nav-link" href="{{ path('app_categories') }}">Catégories</a>
+                </li>
+                <li class="nav-item pe-lg-4">
+                    <a class="nav-link" href="{{ path('app_plats') }}">Plats</a>
+                </li>
+                <li class="nav-item pe-lg-4">
+                    <a class="nav-link" href="{{ path('app_contact') }}">Nous Contacter</a>
+                </li>
+                <li class="nav-item pe-lg-4">
+                    <a class="btn btn-order rounded-1" href="{{ path('app_panier') }}">Panier</a>
+                </li>
+                {% if is_granted('ROLE_USER') %}
+                <li class="nav-item pe-lg-4">
+                    <a class="btn btn-danger rounded-1" href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item pe-lg-4">
+                    <a class="btn btn-order rounded-1" href="{{ path('app_login') }}">Se connecter</a>
+                </li>
+                <!-- Ajoutez ici d'autres liens pour les utilisateurs non connectés -->
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
