@@ -3,6 +3,7 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+    <!-- Section de la bannière -->
     <section class="banner d-flex pt-5" style="width: 100%; position: relative;">
         <div class="container-fluid my-5 py-4 d-flex justify-content-center align-items-center">
             <div class="video-container d-flex justify-content-center" style="width: 100%;">
@@ -20,47 +21,48 @@
         </div>
     </section>
 
+    <!-- Messages de succès -->
     {% for message in app.flashes('commande-ok') %}
-            <div class="alert alert-success">
-                {{ message }}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <!-- Section des catégories -->
+    <section class="Catégories bg-dark-subtil Lugrasimo py-5">
+        <h1 class="text-center dancing"><a href="#">Catégories</a></h1>
+        <div class="container justify-content-center">
+            <div class="row g-4 d-flex justify-content-center">
+                {% for categorie in categories %}
+                    <div class="col-md-3 d-flex">
+                        <div class="card zoom w-100 h-100" style="background-image: url('{{ asset('IMG/' ~ categorie.image) }}'); background-size: cover; height: 300px;">
+                            <div class="card-body custom-card-body">
+                                <h5 class="card-title text-center" style="line-height: 10.5;"><a href="#">{{ categorie.libelle }}</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
+    </section>
 
-    {# Affiche la liste des Catégories #}
-<section class="Catégories bg-dark-subtil Lugrasimo py-5">
-    <h1 class="text-center dancing"><a href="#">Catégories</a></h1>
-    <div class="container justify-content-center">
-        <div class="row g-4 d-flex justify-content-center">
-            {% for categorie in categories %}
-                <div class="col-md-3 d-flex">
-                    <div class="card zoom w-100 h-100" style="background-image: url('{{ asset('IMG/' ~ categorie.image) }}'); background-size: cover; height: 300px;">
-                        <div class="card-body custom-card-body">
-                            <h5 class="card-title text-center" style="line-height: 10.5;"><a href="#">{{ categorie.libelle }}</a></h5>
+    <!-- Section des plats -->
+    <section class="Plats bg-dark-subtil Lugrasimo py-5 mb-5">
+        <h1 class="text-center dancing"><a href="#">Plats</a></h1>
+        <div class="container d-flex justify-content-center">
+            <div class="row g-4 justify-content-center">
+                {% for plat in plats %}
+                    <div class="col-md-3">
+                        <div class="card zoom w-100 h-100" style="background-image: url('{{ asset('/IMG/' ~ plat.image) }}'); background-size: cover; height: 300px;">
+                            <div class="card-body custom-card-body">
+                                <h5 class="card-title text-center" style="line-height: 5;"><a href="#">{{ plat.libelle }}</a></h5>
+                                <p class="card-text text-center" style="line-height: 6;">{{ plat.prix }} €</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-</section>
-
-    {# Affiche la liste des Plats #}
-<section class="Plats bg-dark-subtil Lugrasimo py-5 mb-5">
-    <h1 class="text-center dancing"><a href="#">Plats</a></h1>
-    <div class="container d-flex justify-content-center">
-        <div class="row g-4 justify-content-center">
-            {% for plat in plats %}
-                <div class="col-md-3">
-                    <div class="card zoom w-100 h-100" style="background-image: url('{{ asset('/IMG/' ~ plat.image) }}'); background-size: cover; height: 300px;">
-                        <div class="card-body custom-card-body">
-                            <h5 class="card-title text-center" style="line-height: 5;"><a href="#">{{ plat.libelle }}</a></h5>
-                            <p class="card-text text-center" style="line-height: 6;">{{ plat.prix }} €</p>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
+    </section>
 {% endblock %}
+
