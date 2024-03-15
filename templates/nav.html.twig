@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 dancing">
                 <li class="nav-item pe-lg-4">
                     <a class="nav-link active" href="{{ path('app_home') }}">Accueil</a>
                 </li>
@@ -41,6 +41,10 @@
                 <!-- Ajoutez ici d'autres liens pour les utilisateurs non connectés -->
                 {% endif %}
             </ul>
+            <form class="d-flex my-2 my-lg-0">
+                <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Rechercher">
+                <button class="btn btn-outline-success" type="submit">Rechercher</button>
+            </form>
         </div>
     </div>
 </nav>
