@@ -24,15 +24,15 @@ class AccueilController extends AbstractController
     #[Route('/', name: 'app_accueil')]
     public function index(): Response
     {
-        $categories = $this->categorieRepo->findAll();
-        $plats = $this->platRepo->findAll();
-
+        $categories = $this->categorieRepo->findBy([], [], 3); // Récupérer les trois premières catégories
+        $plats = $this->platRepo->findBy([], [], 5); // Récupérer les cinq premiers plats
+    
         return $this->render('accueil/index.html.twig', [
             'categories' => $categories,
             'plats' => $plats,
         ]);
     }
-
+        
     #[Route('/plats', name: 'app_listePlats')]
     public function plats(): Response
     {

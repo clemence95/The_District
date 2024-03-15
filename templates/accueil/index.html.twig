@@ -29,22 +29,35 @@
     {% endfor %}
 
     <!-- Section des catégories -->
-    <section class="Catégories bg-dark-subtil Lugrasimo py-5">
-        <h1 class="text-center dancing"><a href="#">Catégories</a></h1>
-        <div class="container justify-content-center">
-            <div class="row g-4 d-flex justify-content-center">
-                {% for categorie in categories %}
-                    <div class="col-md-3 d-flex">
-                        <div class="card zoom w-100 h-100" style="background-image: url('{{ asset('IMG/' ~ categorie.image) }}'); background-size: cover; height: 300px;">
-                            <div class="card-body custom-card-body">
-                                <h5 class="card-title text-center" style="line-height: 10.5;"><a href="#">{{ categorie.libelle }}</a></h5>
+<section class="Catégories bg-dark-subtil Lugrasimo py-5">
+    <h1 class="text-center dancing"><a href="#">Catégories</a></h1>
+    <div id="categoryCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for categorie in categories %}
+                <div class="carousel-item {% if loop.first %}active{% endif %}">
+                    <div class="row g-4 d-flex justify-content-center">
+                        <div class="col-md-4 d-flex">
+                            <div class="card zoom w-100 h-100" style="background-image: url('{{ asset('IMG/' ~ categorie.image) }}'); background-size: cover; height: 300px;">
+                                <div class="card-body custom-card-body">
+                                    <h5 class="card-title text-center" style="line-height: 10.5;"><a href="#">{{ categorie.libelle }}</a></h5>
+                                </div>
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
-    </section>
+        <button class="carousel-control-prev" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
 
     <!-- Section des plats -->
     <section class="Plats bg-dark-subtil Lugrasimo py-5 mb-5">
