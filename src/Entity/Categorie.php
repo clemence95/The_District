@@ -15,7 +15,14 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
-#[ApiResource]
+#[ApiResource(operations: [
+    new Get(),
+    //    new Put(),
+    //    new Patch(),
+    //    new Delete(),
+    new GetCollection(),
+    //    new Post(),
+])]
 class Categorie
 {
     #[ORM\Id]
@@ -51,7 +58,7 @@ class Categorie
 
         return $this;
     }
-    
+
     public function getLibelle(): ?string
     {
         return $this->libelle;

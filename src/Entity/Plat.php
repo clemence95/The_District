@@ -16,7 +16,14 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 
 #[ORM\Entity(repositoryClass: PlatRepository::class)]
-#[ApiResource]
+#[ApiResource(operations: [
+    new Get(),
+    //    new Put(),
+    //    new Patch(),
+    //    new Delete(),
+    new GetCollection(),
+    //    new Post(),
+])]
 class Plat
 {
     #[ORM\Id]
