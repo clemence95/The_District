@@ -16,16 +16,16 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 
 #[ORM\Entity(repositoryClass: PlatRepository::class)]
-#[ApiResource(operations: [
-    new Get(),
-    //    new Put(),
-    //    new Patch(),
-    //    new Delete(),
-    new GetCollection(),
-    //    new Post(),
-])]
+#[ApiResource]
 class Plat
 {
+    #[GetCollection(security: "is_granted('ROLE_ADMIN')")]
+    #[Post(security: "is_granted('ROLE_ADMIN')")]
+    #[Get]
+    #[Put(security: "is_granted('ROLE_ADMIN')")]
+    #[Patch(security: "is_granted('ROLE_ADMIN')")]
+    #[Delete(security: "is_granted('ROLE_ADMIN')")]
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
