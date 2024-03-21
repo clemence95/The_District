@@ -19,6 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     normalizationContext: ['groups' => ['read']],
     denormalizationContext: ['groups' => ['write']],
+    security: "is_granted('ROLE_ADMIN')",
 )]
 class Categorie
 {
