@@ -16,24 +16,24 @@ use ApiPlatform\Metadata\Put;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
-#[ApiResource(
-    normalizationContext: ['groups' => ['read']],
-    denormalizationContext: ['groups' => ['write']],
-)]
+#[ApiResource()]
+#[Get]
+#[Put(security: "is_granted('ROLE_ADMIN')")]
+#[GetCollection]
+#[Post(security: "is_granted('ROLE_ADMIN')")]
+#[Patch(security: "is_granted('ROLE_ADMIN')")]
+#[Delete(security: "is_granted('ROLE_ADMIN')")]
 class Categorie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['read',])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['read', 'write'])]
     private ?string $libelle = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['read', 'write'])]
     private ?string $image = null;
 
     #[ORM\Column]
